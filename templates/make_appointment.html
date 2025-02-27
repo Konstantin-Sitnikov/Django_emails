@@ -8,12 +8,12 @@
     <h1>Make an appointment</h1>
     <form action="{% url 'appointments:make_appointment' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <label for="client_name">Your name</label>
+        <label for="client_name">Введите ваше имя</label>
         <input type="text" name="client_name"><br>
-        <label for="message">Какое-то сообщение</label>
+        <label for="message">Опишите вашу проблему</label>
         <input type="text" name="message"><br>
         <label for="date">Введите время</label>
-        <input type="date" name="date"><br>
+        <input type="date" name="date">.<br>
         <input type="submit">
     </form>
 </body>
