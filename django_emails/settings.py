@@ -92,6 +92,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
+
 WSGI_APPLICATION = 'django_emails.wsgi.application'
 
 
