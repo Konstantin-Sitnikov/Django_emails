@@ -7,6 +7,7 @@ from datetime import datetime
 from .models import Appointment
 
 
+
 class AppointmentView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'make_appointment.html', {})
@@ -19,16 +20,6 @@ class AppointmentView(View):
         )
         appointment.save()
 
-        html_content = render_to_string('appointment_created.html', {'appointment': appointment,} )
-
-        msg = EmailMultiAlternatives(
-            subject=f'{appointment.client_name} {appointment.date.strftime("%Y-%M-%d")}',
-            body=appointment.message,
-            from_email='kotoffsky.90@yandex.ru',
-            to=['robokot_90@mail.ru']
-        )
-
-        msg.attach_alternative(html_content, 'text/html')
-        msg.send()
-
         return redirect('appointments:make_appointment')
+
+

@@ -40,18 +40,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'appointment',
+    'appointment.apps.AppointmentConfig',
     'django.contrib.sites',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'django_apscheduler',
 
 
 ]
+#.apps.AppointmentConfig
 
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL')
+SERVER_EMAIL = os.getenv('DEFAULT_EMAIL')
+EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
+EMAIL_PORT = 465
+EMAIL_HOST_USER = os.getenv('HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('HOST_PASSWORD')
+EMAIL_USE_SSL = True
+MANAGERS = [('Константин', 'robokot_90@mail.ru')]
 SITE_ID = 1
+
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25
+
+
 
 
 MIDDLEWARE = [
@@ -154,8 +168,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
-EMAIL_PORT = 465
-EMAIL_HOST_USER = os.getenv('HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('HOST_PASSWORD')
-EMAIL_USE_SSL = True
+
+
+
